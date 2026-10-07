@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }} | CSI ST THOMAS CHURCH, SAMBAVARVADAKARAI{% endblock %}
+
+{% block content %}
+<section class="section py-5">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-lg-8">
+        <p class="eyebrow text-primary">{{ page_title }}</p>
+        <h1>{{ page_subtitle }}</h1>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      {% for item in items %}
+        <div class="col-md-6 col-xl-4">
+          <article class="info-card h-100">
+            <span class="info-badge">{{ page_title }}</span>
+            <h3><a href="{{ item.detail_url }}" class="text-reset text-decoration-none">{{ item.title }}</a></h3>
+            <p>{{ item.summary }}</p>
+            {% if item.detail %}
+              <p class="text-muted">{{ item.detail }}</p>
+            {% endif %}
+            {% if item.link %}
+              <a href="{% url item.link %}" class="btn btn-sm btn-outline-primary mt-3">{{ item.link_label }}</a>
+            {% endif %}
+          </article>
+        </div>
+      {% empty %}
+        <div class="col-12">
+          <div class="alert alert-info">No content available yet for this section.</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

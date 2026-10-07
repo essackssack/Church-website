@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}New Songs | CSI ST THOMAS CHURCH, SAMBAVARVADAKARAI{% endblock %}
+
+{% block content %}
+<section class="section song-catalog py-5">
+  <div class="container">
+    <p class="eyebrow text-primary mb-2">Music</p>
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-4 mb-4">
+      <div>
+        <h1 class="mb-2">New Songs</h1>
+        <p class="text-muted mb-0">Tamil Christian songs and English transliterations.</p>
+      </div>
+      <form method="get" class="song-search d-flex gap-2" role="search">
+        <label class="visually-hidden" for="song-query">Search songs</label>
+        <input id="song-query" class="form-control" type="search" name="q" value="{{ query }}" placeholder="Search songs" />
+        <button class="btn btn-primary" type="submit">Search</button>
+      </form>
+    </div>
+
+    {% if error %}
+      <div class="alert alert-warning" role="status">{{ error }}</div>
+    {% else %}
+      <p class="small text-muted mb-3">{{ total }} songs{% if query %} matching ({{ query }}){% endif %}</p>
+      <div class="song-list">
+        {% for song in songs %}
+          <article class="song-row">
+            <div class="song-copy">
+              <h2 lang="ta">{{ song.title_ta|default:'Untitled song' }}</h2>
+              <p>{{ song.title_en|default:'' }}</p>
+              {% if song.artist or song.album %}
+                <span class="song-meta">{% if song.artist %}{{ song.artist }}{% endif %}{% if song.artist and song.album %} &middot; {% endif %}{% if song.album %}{{ song.album }}{% endif %}</span>
+              {% endif %}
+            </div>
+            <a class="song-open" href="{{ song.url }}" target="_blank" rel="noopener noreferrer" aria-label="Open {{ song.title_en|default:song.title_ta }} on Tamil Christian World">Open song <span aria-hidden="true">&#8599;</span></a>
+          </article>
+        {% empty %}
+          <div class="alert alert-info">No songs found. Try another search.</div>
+        {% endfor %}
+      </div>
+
+      {% if pages > 1 %}
+        <nav class="song-pagination" aria-label="Song pages">
+          {% if has_previous %}<a class="btn btn-outline-primary" href="?{% if query %}q={{ query|urlencode }}&amp;{% endif %}page={{ previous_page }}">Previous</a>{% else %}<span></span>{% endif %}
+          <span class="small text-muted">Page {{ page }} of {{ pages }}</span>
+          {% if has_next %}<a class="btn btn-outline-primary" href="?{% if query %}q={{ query|urlencode }}&amp;{% endif %}page={{ next_page }}">Next</a>{% else %}<span></span>{% endif %}
+        </nav>
+      {% endif %}
+    {% endif %}
+
+    <a href="{{ parent_url }}" class="btn btn-outline-primary mt-4">Back to Music</a>
+    <p class="song-credit">Catalogue provided by <a href="https://tamilchristianworld.com/rights" target="_blank" rel="noopener noreferrer">Tamil Christian World</a>. English text is machine transliteration.</p>
+  </div>
+</section>
+{% endblock %}

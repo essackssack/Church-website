@@ -1,0 +1,22 @@
+{% extends "admin/change_list.html" %}
+
+{% block content %}
+  <div class="section-content-groups">
+    <h2>Manage content inside each existing subheading</h2>
+    <p>Select Add content beside the exact subheading you want to manage.</p>
+    {% for group in subheading_groups %}
+      <section class="section-content-group">
+        <h3>{{ group.main_heading }}</h3>
+        <div class="section-content-links">
+          {% for subheading in group.subheadings %}
+            <div class="section-content-link">
+              <span>{{ subheading }}</span>
+              <a class="button" href="{% url 'admin:home_sectioncontent_add' %}?main_heading={{ group.main_heading|urlencode }}&subheading={{ subheading|urlencode }}">Add content</a>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+  {{ block.super }}
+{% endblock %}

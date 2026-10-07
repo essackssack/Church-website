@@ -1,0 +1,136 @@
+:root {
+  --church-green: #1f5a47;
+  --church-green-dark: #143d32;
+  --church-gold: #d8b56a;
+  --church-cream: #f5f2ea;
+  --church-sand: #f3efe8;
+  --church-charcoal: #1c2329;
+}
+
+body {
+  background: var(--church-cream);
+  color: var(--church-charcoal);
+}
+
+#header {
+  background: linear-gradient(135deg, var(--church-green) 0%, var(--church-green-dark) 100%);
+  color: #fff;
+  border-bottom: 4px solid var(--church-gold);
+}
+
+#branding h1,
+#branding a {
+  color: #fff !important;
+}
+
+.module h2,
+.module caption,
+#content-main h1,
+.app-list a {
+  color: var(--church-green-dark);
+}
+
+.module {
+  background: #fff;
+  border: 1px solid rgba(31, 90, 71, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(17, 38, 31, 0.06);
+}
+
+.button,
+.button.alt,
+input[type=submit],
+input[type=button],
+input[type=reset],
+#save,
+.submit-row input,
+.selector-add,
+.selector-remove {
+  background: var(--church-green);
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.button.default,
+#save {
+  background: linear-gradient(135deg, var(--church-green) 0%, var(--church-green-dark) 100%);
+}
+
+a:link,
+#nav-sidebar a,
+#breadcrumbs a {
+  color: var(--church-green);
+}
+
+#nav-sidebar {
+  background: #f8f5f1;
+  border-right: 1px solid rgba(31, 90, 71, 0.12);
+}
+
+#nav-sidebar .current-model {
+  background: rgba(31, 90, 71, 0.08);
+  border-left: 4px solid var(--church-gold);
+}
+
+#recent-actions-module,
+.inline-related {
+  background: #fff;
+  border: 1px solid rgba(31, 90, 71, 0.12);
+  border-radius: 14px;
+}
+
+form {
+  background: transparent;
+}
+
+.fieldset {
+  border-color: rgba(31, 90, 71, 0.12);
+}
+
+.help,
+.small {
+  color: var(--church-charcoal);
+}
+
+.section-content-groups {
+  margin-bottom: 28px;
+}
+
+.section-content-groups > h2 {
+  color: var(--church-green-dark);
+  margin-bottom: 6px;
+}
+
+.section-content-groups > p {
+  margin-bottom: 18px;
+}
+
+.section-content-group {
+  background: #fff;
+  border: 1px solid rgba(31, 90, 71, 0.12);
+  border-radius: 14px;
+  margin-bottom: 16px;
+  padding: 16px 20px;
+}
+
+.section-content-group h3 {
+  border-bottom: 1px solid rgba(31, 90, 71, 0.12);
+  color: var(--church-green-dark);
+  margin: 0 0 8px;
+  padding-bottom: 10px;
+}
+
+.section-content-link {
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.section-content-link:last-child {
+  border-bottom: 0;
+}

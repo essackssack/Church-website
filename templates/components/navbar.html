@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" aria-label="Main navigation">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'events' %}">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'magazine' %}">Magazine</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'music' %}">Music</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'media' %}">Media</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'community' %}">Community</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+
+      <div class="d-flex align-items-center gap-2">
+        <a class="btn btn-outline-primary btn-sm" href="{% url 'signup' %}">Sign Up</a>
+        <a class="btn btn-primary btn-sm" href="{% url 'contact' %}">Plan a Visit</a>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ subheading_title }} | CSI ST THOMAS CHURCH, SAMBAVARVADAKARAI{% endblock %}
+
+{% block content %}
+<section class="section py-5">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-lg-8">
+        <p class="eyebrow text-primary">{{ main_heading }}</p>
+        <h1>{{ subheading_title }}</h1>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      {% for content in content_items %}
+        <div class="col-12">
+          <article class="info-card">
+            {% if content.title %}<h2>{{ content.title }}</h2>{% endif %}
+            {% if content.summary %}<p>{{ content.summary }}</p>{% endif %}
+            {% if content.body %}<div class="text-muted">{{ content.body|linebreaksbr }}</div>{% endif %}
+            {% if content.image %}<img src="{{ content.image.url }}" alt="{{ content.title|default:subheading_title }}" class="img-fluid rounded-3 mb-3" />{% endif %}
+            {% if content.event_date or content.location %}
+              <p class="small text-muted">
+                {% if content.event_date %}{{ content.event_date }}{% endif %}
+                {% if content.location %} | {{ content.location }}{% endif %}
+              </p>
+            {% endif %}
+            {% if content.media_url %}<a href="{{ content.media_url }}" class="btn btn-sm btn-outline-primary mb-2" target="_blank" rel="noopener">Open media</a>{% endif %}
+          </article>
+        </div>
+      {% empty %}
+        <div class="col-12">
+          <div class="alert alert-info">No published content is available for this subheading yet.</div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <a href="{{ parent_url }}" class="btn btn-outline-primary mt-4">Back to {{ main_heading }}</a>
+  </div>
+</section>
+{% endblock %}
